@@ -1,0 +1,38 @@
+create database dbKelulusan
+
+create table tblLogin(
+username varchar(25) not null primary key,
+password varchar(35),
+nama varchar(50),
+email varchar(50),
+level varchar(5))
+
+create table tblMahasiswa(
+nim varchar(10) not null primary key,
+nama varchar(35),
+jk varchar(10),
+tempatLahir varchar(20),
+tglLahir date,
+nomorTelp varchar(15),
+alamat text)
+
+create table tblMatkul(
+idMatkul int not null primary key,
+matkul varchar(35),
+semester varchar(5),
+sks varchar(5),
+ket text)
+
+create table tblPenilaian(
+idNilai int not null primary key,
+idMatkul int,
+nim varchar(10),
+nilai1 int,
+nilai2 int,
+nilai3 int,
+nilai4 int,
+nilai5 int,
+nilai6 int,
+ket text,
+constraint idMatkul foreign key (idMatkul) references tblMatkul(idMatkul),
+constraint nim foreign key (nim) references tblMahasiswa(nim))
